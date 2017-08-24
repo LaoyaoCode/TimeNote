@@ -2,11 +2,14 @@ package com.example.laoyao.timenote;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.laoyao.timenote.Tools.DateAndTime;
 import com.example.laoyao.timenote.network.BingEveryDayImage;
 
 public class NoteDisplayActivity extends AppCompatActivity {
@@ -16,6 +19,9 @@ public class NoteDisplayActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_display);
+
+        Toolbar toolbar =(Toolbar)findViewById(R.id.toolbar) ;
+        setSupportActionBar(toolbar);
 
         TextView test = (TextView)findViewById(R.id.testText) ;
         StringBuilder bulider = new StringBuilder() ;
@@ -71,5 +77,12 @@ public class NoteDisplayActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.toolbar , menu);
+        return true ;
     }
 }

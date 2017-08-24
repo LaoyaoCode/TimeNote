@@ -8,4 +8,5 @@
     <color name="secondary_text">#E0FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="whiteBack">#FFFFFF</color>
+    <color name="recordTag">#00BCD4</color>
 </resources>
