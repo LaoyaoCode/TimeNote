@@ -9,7 +9,6 @@ public class NoteRecord
     private int DYear ;
     private int DMonth ;
     private int DDay ;
-
     private int DHour ;
     private int DMinute ;
 

@@ -3,14 +3,89 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:layout_margin="5dp"
+    android:layout_height="80dp"
+    android:layout_margin="1dp"
     app:cardCornerRadius="4dp"
-    app:cardElevation="5dp"
+    app:cardElevation="3dp"
     android:foreground="?attr/selectableItemBackground">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="40dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:id="@+id/short_tag_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textSize="21sp"
+                android:textColor="@color/primary_text_dark"
+                android:gravity="center_vertical"
+                android:text="Today you should finished the homeWork"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginLeft="-4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/blue_star"
+                        android:alpha="0.5"/>
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/warning_time_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/secondary_text_dark"
+                        android:textSize="15sp"
+                        android:text="2017-08-24"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1.2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginLeft="-4dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/pink_important_star"
+                        android:alpha="0.5"/>
+                    <TextView
+                        android:layout_marginLeft="5dp"
+                        android:id="@+id/dead_time_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/secondary_text_dark"
+                        android:textSize="15sp"
+                        android:text="2017-08-24   12.00"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/is_today_and_dead_Image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/little_star"
+            android:alpha="0.8"/>
     </RelativeLayout>
-
 </android.support.v7.widget.CardView>

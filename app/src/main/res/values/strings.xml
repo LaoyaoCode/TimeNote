@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TimeNote</string>
+    <string name="toolBar_setting_tittle">Setting</string>
+    <string name="toolBar_all_or_today_all_tittle">Diaplay All</string>
+    <string name="toolBar_all_or_today_today_tittle">Display Today</string>
+    <string name="toolBar_addNewRecord_tittle">Add New Record</string>
 </resources>
