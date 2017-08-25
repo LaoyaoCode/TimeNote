@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.laoyao.timenote.SplashActivity"
-    android:background="@color/primary_dark">
+    android:background="@color/mainBack">
 
     <LinearLayout
         android:layout_width="match_parent"

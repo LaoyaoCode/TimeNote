@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/darkTextTheme"
+    tools:context="com.example.laoyao.timenote.AddNewRecordActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="@string/addNewRecordTittle"
+                android:textSize="35sp"
+                android:textColor="@color/primary_text_dark"
+                android:gravity="center" />
+
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                android:id="@+id/noteCalendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mcv_arrowColor="@color/accent"
+                app:mcv_showOtherDates="all"
+                app:mcv_selectionColor="@color/accent"/>
+
+            <TimePicker
+                android:id="@+id/note_TimePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TimePicker>
+
+            <EditText
+                android:id="@+id/shortTag_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:maxLength="30"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:hint="@string/shortTagTittle" />
+
+            <com.example.laoyao.timenote.Tools.BetterEditText
+                android:id="@+id/details_EditText"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:gravity="center"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:background="@color/bookColor"
+                android:textSize="20sp"
+                android:padding="10dp"
+                android:hint="@string/detailTittle"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+            </com.example.laoyao.timenote.Tools.BetterEditText>
+
+            <Button
+                android:id="@+id/createNewNoteButton"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/recordTag"
+                android:text="@string/createFinished"
+                android:textAllCaps="false"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:textSize="25sp"
+                android:textColor="@color/primary_text"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

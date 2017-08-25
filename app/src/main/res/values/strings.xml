@@ -4,4 +4,8 @@
     <string name="toolBar_all_or_today_all_tittle">Diaplay All</string>
     <string name="toolBar_all_or_today_today_tittle">Display Today</string>
     <string name="toolBar_addNewRecord_tittle">Add New Record</string>
+    <string name="addNewRecordTittle">Note</string>
+    <string name="shortTagTittle">Tag  (Max 30)</string>
+    <string name="detailTittle">Details</string>
+    <string name="createFinished">Create</string>
 </resources>

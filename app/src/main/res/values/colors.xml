@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#9C27B0</color>
-    <color name="primary_dark">#7B1FA2</color>
+    <color name="primary">@android:color/transparent</color>
+    <color name="primary_dark">@android:color/transparent</color>
     <color name="primary_light">#E1BEE7</color>
     <color name="accent">#00BCD4</color>
     <color name="primary_text">#FFFFFF</color>
@@ -11,4 +11,6 @@
     <color name="divider">#BDBDBD</color>
     <color name="whiteBack">#FFFFFF</color>
     <color name="recordTag">#00BCD4</color>
+    <color name="mainBack">#00BCD4</color>
+    <color name="bookColor">#FFF5E1</color>
 </resources>

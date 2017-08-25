@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:layout_margin="1dp"
+    android:layout_margin="5dp"
     app:cardCornerRadius="4dp"
     app:cardElevation="3dp"
     android:foreground="?attr/selectableItemBackground">
@@ -38,9 +38,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent">
                     <ImageView
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="-4dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="-8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:src="@drawable/blue_star"
@@ -60,9 +60,9 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent">
                     <ImageView
-                        android:layout_marginTop="2dp"
-                        android:layout_marginBottom="2dp"
-                        android:layout_marginLeft="-4dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginBottom="6dp"
+                        android:layout_marginLeft="-8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:src="@drawable/pink_important_star"
@@ -81,8 +81,8 @@
         </LinearLayout>
         <ImageView
             android:id="@+id/is_today_and_dead_Image"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:src="@drawable/little_star"
