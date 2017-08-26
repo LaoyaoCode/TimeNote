@@ -32,6 +32,12 @@ public class DateAndTime
         private int Month = 0 ;
         private int Day = 0 ;
 
+        public StructedDate(int year, int month, int day) {
+            Year = year;
+            Month = month;
+            Day = day;
+        }
+
         public StructedDate(String date) throws WrongStringFormatException
         {
             String[] values = date.split("-") ;
@@ -164,6 +170,7 @@ public class DateAndTime
     {
         private int Hour ;
         private int Minute ;
+
 
         public StructedTime(String time) throws WrongStringFormatException
         {

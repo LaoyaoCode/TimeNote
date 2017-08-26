@@ -1,12 +1,21 @@
 package com.example.laoyao.timenote.DbMode;
 
+import android.support.annotation.NonNull;
+
+import com.example.laoyao.timenote.Tools.DateAndTime;
+
 import org.litepal.crud.DataSupport;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Laoyao on 2017/8/24.
  */
 
-public class NoteRecord extends DataSupport
+public class NoteRecord extends DataSupport implements Comparable
 {
     private int id ;
 
@@ -122,5 +131,77 @@ public class NoteRecord extends DataSupport
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o)
+    {
+        NoteRecord record = (NoteRecord)o ;
+        int myselfDiff ;
+        int recordDiff ;
+        int myselfWDiff ;
+        int recordWDiff ;
+
+        try
+        {
+            myselfDiff = daysBetween(DateAndTime.GetDateString() ,
+                    getDYear() + "-" + getDMonth() + "-" + getDDay() ) ;
+            recordDiff = daysBetween(DateAndTime.GetDateString() ,
+                    record.getDYear() + "-" + record.getDMonth() + "-" + record.getDDay()) ;
+
+            myselfWDiff = daysBetween(DateAndTime.GetDateString() ,
+                    getWYear() + "-" + getWMonth() + "-" + getWDay() ) ;
+            recordWDiff = daysBetween(DateAndTime.GetDateString() ,
+                    record.getWYear() + "-" + record.getWMonth() + "-" + record.getWDay()) ;
+
+            if(myselfWDiff < 0 && recordWDiff >= 0)
+            {
+                return -1 ;
+            }
+
+            if(myselfWDiff >= 0 && recordWDiff < 0)
+            {
+                return 1 ;
+            }
+
+            if(myselfDiff > 0 && recordDiff < 0)
+            {
+                return -1 ;
+            }
+
+            else if(myselfDiff <0 && recordDiff >0)
+            {
+                return 1 ;
+            }
+
+            else
+            {
+                if(myselfDiff > recordDiff)
+                {
+                    return 1 ;
+                }
+                else
+                {
+                    return -1 ;
+                }
+            }
+        }
+        catch (ParseException e)
+        {
+            return 0 ;
+        }
+    }
+
+    public static int daysBetween(String smdate,String bdate) throws ParseException
+    {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(sdf.parse(smdate));
+        long time1 = cal.getTimeInMillis();
+        cal.setTime(sdf.parse(bdate));
+        long time2 = cal.getTimeInMillis();
+        long between_days=(time1 - time2)/(1000*3600*24);
+
+        return Integer.parseInt(String.valueOf(between_days));
     }
 }

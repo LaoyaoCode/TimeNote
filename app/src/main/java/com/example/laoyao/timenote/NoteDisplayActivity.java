@@ -3,6 +3,7 @@ package com.example.laoyao.timenote;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import org.litepal.crud.DataSupport;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -175,6 +177,7 @@ public class NoteDisplayActivity extends AppCompatActivity {
     {
 
         List<NoteRecord> records = DataSupport.findAll(NoteRecord.class) ;
+        Collections.reverse(records);
 
         for(NoteRecord record : records)
         {
@@ -188,9 +191,12 @@ public class NoteDisplayActivity extends AppCompatActivity {
             {
                 if(!IsContain(record))
                 {
-                    DisplayRecords.add(record);
-                    //MineAdapter.notifyItemRangeInserted(0 , DisplayRecords.size());
-                    MineAdapter.notifyItemInserted(DisplayRecords.indexOf(record));
+                    int position = FindAInsertPosition(record) ;
+
+                    //DisplayRecords.add(record);
+                    //MineAdapter.notifyItemInserted(DisplayRecords.indexOf(record));
+                    DisplayRecords.add(position , record);
+                    MineAdapter.notifyItemInserted(position);
                 }
             }
             else
@@ -205,16 +211,34 @@ public class NoteDisplayActivity extends AppCompatActivity {
         }
     }
 
+    private int FindAInsertPosition(NoteRecord fRecord)
+    {
+        for(int counter = 0 ; counter < DisplayRecords.size() ; counter++)
+        {
+            if(fRecord.compareTo(DisplayRecords.get(counter)) > 0)
+            {
+                return counter ;
+            }
+        }
+
+        return DisplayRecords.size();
+    }
+
     private void GetAndDisplayAllRecords()
     {
         List<NoteRecord> records = DataSupport.findAll(NoteRecord.class) ;
+        Collections.sort(records);
 
         for(NoteRecord record : records)
         {
             if(!IsContain(record))
             {
-                DisplayRecords.add(record);
-                MineAdapter.notifyItemInserted(DisplayRecords.indexOf(record));
+                int position = FindAInsertPosition(record) ;
+
+                //DisplayRecords.add(record);
+                //MineAdapter.notifyItemInserted(DisplayRecords.indexOf(record));
+                DisplayRecords.add(position , record);
+                MineAdapter.notifyItemInserted(position);
             }
         }
     }

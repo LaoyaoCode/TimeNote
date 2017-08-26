@@ -26,6 +26,7 @@ import com.example.laoyao.timenote.Tools.DateAndTime ;
 
 import java.sql.Time;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class AddNewRecordActivity extends AppCompatActivity
@@ -72,7 +73,9 @@ public class AddNewRecordActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 List<CalendarDay> selectedDays =  calendarView.getSelectedDates() ;
-
+                //获取提醒日期和最后日期
+                CalendarDay warningDate ;
+                CalendarDay deadDate ;
                 //确保选择了日期
                 if(selectedDays.size() == 0 )
                 {
@@ -88,9 +91,24 @@ public class AddNewRecordActivity extends AppCompatActivity
                     return ;
                 }
 
-                //获取提醒日期和最后日期
-                CalendarDay warningDate = selectedDays.get(0) ;
-                CalendarDay deadDate = selectedDays.get(selectedDays.size() - 1) ;
+                DateAndTime.StructedDate dateA = new DateAndTime.StructedDate(selectedDays.get(0).getYear() ,
+                        selectedDays.get(0).getMonth() , selectedDays.get(0).getDay()) ;
+                DateAndTime.StructedDate dateB = new DateAndTime.StructedDate(selectedDays.get(selectedDays.size() - 1).getYear() ,
+                                selectedDays.get(selectedDays.size() - 1).getMonth() , selectedDays.get(selectedDays.size() - 1).getDay()) ;
+
+                if(DateAndTime.StructedDate.Compare(dateA , dateB) == DateAndTime.CompareResult.Bigger)
+                {
+                    //获取提醒日期和最后日期
+                     warningDate = selectedDays.get(selectedDays.size() - 1) ;
+                     deadDate =  selectedDays.get(0);
+                }
+                else
+                {
+                    //获取提醒日期和最后日期
+                     warningDate = selectedDays.get(0) ;
+                     deadDate =  selectedDays.get(selectedDays.size() - 1);
+                }
+
 
 
                 NoteRecord newRecord = new NoteRecord(deadDate.getYear() , deadDate.getMonth() + 1 , deadDate.getDay() ,
