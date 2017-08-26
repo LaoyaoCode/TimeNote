@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
         <LinearLayout
+            android:fitsSystemWindows="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -23,7 +24,8 @@
                 android:text="@string/addNewRecordTittle"
                 android:textSize="35sp"
                 android:textColor="@color/primary_text_dark"
-                android:gravity="center" />
+                android:gravity="center"
+                />
 
             <com.prolificinteractive.materialcalendarview.MaterialCalendarView
                 android:id="@+id/noteCalendarView"
@@ -33,10 +35,13 @@
                 app:mcv_showOtherDates="all"
                 app:mcv_selectionColor="@color/accent"/>
 
+            <!--
             <TimePicker
                 android:id="@+id/note_TimePicker"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"></TimePicker>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"></TimePicker>
+                -->
 
             <EditText
                 android:id="@+id/shortTag_EditText"
@@ -45,12 +50,13 @@
                 android:gravity="center_horizontal"
                 android:maxLength="30"
                 android:textSize="20sp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="@string/shortTagTittle" />
 
+            <!--
             <com.example.laoyao.timenote.Tools.BetterEditText
                 android:id="@+id/details_EditText"
                 android:layout_width="match_parent"
@@ -65,6 +71,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp">
             </com.example.laoyao.timenote.Tools.BetterEditText>
+            -->
 
             <Button
                 android:id="@+id/createNewNoteButton"
@@ -74,7 +81,7 @@
                 android:background="@color/recordTag"
                 android:text="@string/createFinished"
                 android:textAllCaps="false"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp"
                 android:textSize="25sp"
                 android:textColor="@color/primary_text"/>

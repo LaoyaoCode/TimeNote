@@ -1,16 +1,20 @@
 package com.example.laoyao.timenote.DbMode;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by Laoyao on 2017/8/24.
  */
 
-public class NoteRecord
+public class NoteRecord extends DataSupport
 {
+    private int id ;
+
     private int DYear ;
     private int DMonth ;
     private int DDay ;
-    private int DHour ;
-    private int DMinute ;
+    //private int DHour ;
+    //private int DMinute ;
 
 
     private int WYear ;
@@ -19,23 +23,21 @@ public class NoteRecord
 
 
     private String ShortTag ;
-    private String TotalMessage ;
 
     public NoteRecord(int DYear, int DMonth, int DDay,
-                      int DHour, int DMinute,
+                      //int DHour, int DMinute,
                       int WYear, int WMonth, int WDay,
-                      String shortTag, String totalMessage)
+                      String shortTag)
     {
         this.DYear = DYear;
         this.DMonth = DMonth;
         this.DDay = DDay;
-        this.DHour = DHour;
-        this.DMinute = DMinute;
+        //this.DHour = DHour;
+        //this.DMinute = DMinute;
         this.WYear = WYear;
         this.WMonth = WMonth;
         this.WDay = WDay;
         ShortTag = shortTag;
-        TotalMessage = totalMessage;
     }
 
     public int getDYear() {
@@ -50,13 +52,14 @@ public class NoteRecord
         return DDay;
     }
 
+    /*
     public int getDHour() {
         return DHour;
     }
 
     public int getDMinute() {
         return DMinute;
-    }
+    }*/
 
     public int getWYear() {
         return WYear;
@@ -74,9 +77,6 @@ public class NoteRecord
         return ShortTag;
     }
 
-    public String getTotalMessage() {
-        return TotalMessage;
-    }
 
     public void setDYear(int DYear) {
         this.DYear = DYear;
@@ -90,13 +90,14 @@ public class NoteRecord
         this.DDay = DDay;
     }
 
+    /*
     public void setDHour(int DHour) {
         this.DHour = DHour;
     }
 
     public void setDMinute(int DMinute) {
         this.DMinute = DMinute;
-    }
+    }*/
 
     public void setWYear(int WYear) {
         this.WYear = WYear;
@@ -114,7 +115,12 @@ public class NoteRecord
         ShortTag = shortTag;
     }
 
-    public void setTotalMessage(String totalMessage) {
-        TotalMessage = totalMessage;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

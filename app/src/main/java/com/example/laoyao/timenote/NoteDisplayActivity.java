@@ -24,6 +24,8 @@ import com.example.laoyao.timenote.Tools.DateAndTime;
 import com.example.laoyao.timenote.Tools.RecordAdapter;
 import com.example.laoyao.timenote.network.BingEveryDayImage;
 
+import org.litepal.crud.DataSupport;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -32,8 +34,9 @@ import java.util.ListIterator;
 
 public class NoteDisplayActivity extends AppCompatActivity {
 
-    private List<NoteRecord> DisplayRecords ;
+    private List<NoteRecord> DisplayRecords = new ArrayList<>();
     private boolean IsDisplayToday = true ;
+    private RecordAdapter MineAdapter ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -56,10 +59,8 @@ public class NoteDisplayActivity extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView)findViewById(R.id.noteDisplay_RecyclerView) ;
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this) ;
         recyclerView.setLayoutManager(linearLayoutManager);
-
-        DisplayRecords = testRecord() ;
-
-        recyclerView.setAdapter(new RecordAdapter(DisplayRecords));
+        MineAdapter = new RecordAdapter(DisplayRecords, this) ;
+        recyclerView.setAdapter(MineAdapter);
 
 
         final ImageView viewImage = (ImageView)findViewById(R.id.collapsing_Image) ;
@@ -107,6 +108,23 @@ public class NoteDisplayActivity extends AppCompatActivity {
         });
     }
 
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        if(IsDisplayToday)
+        {
+            GetAndDisplayTodayRecords() ;
+        }
+        else
+        {
+            GetAndDisplayAllRecords();
+        }
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -139,6 +157,7 @@ public class NoteDisplayActivity extends AppCompatActivity {
         {
             //显示所有
             IsDisplayToday = false ;
+            GetAndDisplayAllRecords();
             item.setIcon(R.drawable.menu_icon_minimize) ;
             item.setTitle(R.string.toolBar_all_or_today_today_tittle) ;
         }
@@ -146,45 +165,84 @@ public class NoteDisplayActivity extends AppCompatActivity {
         {
             //仅仅显示今天的
             IsDisplayToday = true ;
+            GetAndDisplayTodayRecords();
             item.setIcon(R.drawable.menu_icon_maximize) ;
             item.setTitle(R.string.toolBar_all_or_today_all_tittle) ;
         }
     }
-    public List<NoteRecord> testRecord()
+
+    private void GetAndDisplayTodayRecords()
     {
-        List<NoteRecord> records = new ArrayList<>() ;
 
-        //正好test
-        for(int i = 0 ; i < 5 ; i++)
+        List<NoteRecord> records = DataSupport.findAll(NoteRecord.class) ;
+
+        for(NoteRecord record : records)
         {
-            NoteRecord record = new NoteRecord(2017 , 8 , 25 ,
-                    23 , 0 ,
-                    2017 , 8 , 23 ,
-                    "This is a test" , "Total Message") ;
-            records.add(record);
+            String wDate = record.getWYear() + "-" +String.format("%02d" , record.getWMonth())
+                    + "-" + String.format("%02d" ,record.getWDay()) ;
+
+            DateAndTime.CompareResult wDateResult = DateAndTime.StructedDate.Compare(wDate , DateAndTime.GetDateString() );
+
+            //已经到了提醒日期
+            if(wDateResult == DateAndTime.CompareResult.Smaller || wDateResult == DateAndTime.CompareResult.Equal)
+            {
+                if(!IsContain(record))
+                {
+                    DisplayRecords.add(record);
+                    //MineAdapter.notifyItemRangeInserted(0 , DisplayRecords.size());
+                    MineAdapter.notifyItemInserted(DisplayRecords.indexOf(record));
+                }
+            }
+            else
+            {
+                if(IsContain(record))
+                {
+                    int position = FindPosition(record) ;
+                    DisplayRecords.remove(position) ;
+                    MineAdapter.notifyItemRemoved(position);
+                }
+            }
+        }
+    }
+
+    private void GetAndDisplayAllRecords()
+    {
+        List<NoteRecord> records = DataSupport.findAll(NoteRecord.class) ;
+
+        for(NoteRecord record : records)
+        {
+            if(!IsContain(record))
+            {
+                DisplayRecords.add(record);
+                MineAdapter.notifyItemInserted(DisplayRecords.indexOf(record));
+            }
+        }
+    }
+
+    private boolean IsContain(NoteRecord tRecord)
+    {
+        for(NoteRecord record : DisplayRecords)
+        {
+            if(record.getId() == tRecord.getId())
+            {
+                return true ;
+            }
         }
 
-        //过期test
-        for(int i = 0 ; i < 5 ; i++)
+        return false ;
+    }
+
+    private int FindPosition(NoteRecord tRecord)
+    {
+        for(int counter = 0 ; counter < DisplayRecords.size() ; counter++)
         {
-            NoteRecord record = new NoteRecord(2017 , 8 , 23 ,
-                    6 , 0 ,
-                    2017 , 8 , 20 ,
-                    "This is a test" , "Total Message") ;
-            records.add(record);
+            if(DisplayRecords.get(counter).getId() == tRecord.getId())
+            {
+                return counter ;
+            }
         }
 
-        //没到test
-        for(int i = 0 ; i < 5 ; i++)
-        {
-            NoteRecord record = new NoteRecord(2017 , 8 , 30 ,
-                    6 , 0 ,
-                    2017 , 8 , 25 ,
-                    "This is a test" , "Total Message") ;
-            records.add(record);
-        }
-
-        return records ;
+        return -1 ;
     }
 
 }
