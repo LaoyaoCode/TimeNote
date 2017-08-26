@@ -6,13 +6,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
         android:icon="@mipmap/time_app_icon_round"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/time_app_icon_round"
         android:supportsRtl="true"
-        android:theme="@style/darkTextTheme"
-        android:name="org.litepal.LitePalApplication">
+        android:theme="@style/darkTextTheme">
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="portrait">
@@ -28,7 +28,8 @@
         <activity
             android:name=".AddNewRecordActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".SettingActivity"></activity>
     </application>
 
 </manifest>

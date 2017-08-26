@@ -140,6 +140,8 @@ public class NoteDisplayActivity extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.setting:
+                Intent set = new Intent(this , SettingActivity.class) ;
+                startActivity(set);
                 break ;
             case R.id.display_all_or_today:
                 DisplayExchange(item) ;
