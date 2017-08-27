@@ -13,4 +13,7 @@
     <color name="recordTag">#00BCD4</color>
     <color name="mainBack">#00BCD4</color>
     <color name="bookColor">#FFF5E1</color>
+    <color name="lightSwitch">#ebad1a</color>
+    <color name="notificationSwitch">#d4237a</color>
+    <color name="everydayAndOpenSwitch">#000000</color>
 </resources>

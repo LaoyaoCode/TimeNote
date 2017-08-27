@@ -94,10 +94,15 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.RViewHolde
             {
                 holder.MessageHelpImage.setImageResource(R.drawable.little_star);
             }
-            //已经到了提醒期间，正好或者超过了终结日期
-            else
+            //已经到了提醒期间，正好到了终结日期
+            else if(dDateResult == DateAndTime.CompareResult.Equal)
             {
                 holder.MessageHelpImage.setImageResource(R.drawable.little_star_pink);
+            }
+            //已经到了提醒日期，超过了终结日期
+            else
+            {
+                holder.MessageHelpImage.setImageResource(R.drawable.little_star_black);
             }
         }
         //还没有到提醒日期

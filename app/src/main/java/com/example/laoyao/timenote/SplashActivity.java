@@ -11,6 +11,7 @@ import android.view.WindowManager;
 
 import com.example.laoyao.timenote.Tools.DateAndTime;
 import com.example.laoyao.timenote.Tools.MLog;
+import com.example.laoyao.timenote.Tools.NotificationBulider;
 import com.example.laoyao.timenote.network.* ;
 
 public class SplashActivity extends AppCompatActivity
@@ -35,11 +36,13 @@ public class SplashActivity extends AppCompatActivity
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
+
         new Thread(new Runnable()
         {
             @Override
             public void run()
             {
+                /*
                 try
                 {
                     Thread.sleep(WaitTime);
@@ -47,7 +50,10 @@ public class SplashActivity extends AppCompatActivity
                 catch (InterruptedException e)
                 {
                     e.printStackTrace();
-                }
+                }*/
+
+                //显示notification
+                NotificationBulider.OpenApp(SplashActivity.this);
 
                 //切换到主显示界面
                 Intent beginMainTask = new Intent( SplashActivity.this, NoteDisplayActivity.class) ;

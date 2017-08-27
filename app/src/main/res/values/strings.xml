@@ -11,6 +11,11 @@
     <string name="title_activity_settings">Settings</string>
     <string name="onString">On</string>
     <string name="offString">Off</string>
+    <string name="createActivityTittle">Note</string>
     <string name="openMonthDisplayString">Month&#160;&#160;&#160;&#160;Mode</string>
     <string name="setActivityTittle">Setting</string>
+    <string name="lightSwitchButton">LED</string>
+    <string name="notificationSwitchButton">Notification</string>
+    <string name="everydaySwitchButton">On&#160;&#160;&#160;&#160;Date&#160;&#160;&#160;&#160;Changed</string>
+    <string name="openAppSwitchButton">On&#160;&#160;&#160;&#160;App&#160;&#160;&#160;&#160;Opened</string>
 </resources>

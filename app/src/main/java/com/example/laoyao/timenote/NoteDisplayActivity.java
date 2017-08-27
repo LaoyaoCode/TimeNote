@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.laoyao.timenote.DbMode.NoteRecord;
 import com.example.laoyao.timenote.Tools.DateAndTime;
+import com.example.laoyao.timenote.Tools.NotificationBulider;
 import com.example.laoyao.timenote.Tools.RecordAdapter;
 import com.example.laoyao.timenote.network.BingEveryDayImage;
 
