@@ -18,4 +18,6 @@
     <string name="notificationSwitchButton">Notification</string>
     <string name="everydaySwitchButton">On&#160;&#160;&#160;&#160;Date&#160;&#160;&#160;&#160;Changed</string>
     <string name="openAppSwitchButton">On&#160;&#160;&#160;&#160;App&#160;&#160;&#160;&#160;Opened</string>
+    <string name="version">Version&#160;&#160;&#160;&#160;2.0</string>
+    <string name="email">laoyaocode@outlook.com</string>
 </resources>

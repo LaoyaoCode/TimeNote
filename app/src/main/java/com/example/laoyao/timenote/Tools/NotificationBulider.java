@@ -99,17 +99,13 @@ public class NotificationBulider
 
         PendingIntent pi = PendingIntent.getActivities(context , 0 , new Intent[]{action} , 0) ;
 
-        if(settingManager.IsLED())
+        if(settingManager.IsLED() )
         {
             int ledColor  ;
 
             if(deadNumber > 0)
             {
                 ledColor = Color.RED;
-            }
-            else if(warningNumber > 0)
-            {
-                ledColor = Color.YELLOW ;
             }
             else
             {
