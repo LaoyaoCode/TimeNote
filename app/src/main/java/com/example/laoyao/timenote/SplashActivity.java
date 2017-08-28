@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import com.example.laoyao.timenote.Tools.DateAndTime;
 import com.example.laoyao.timenote.Tools.MLog;
 import com.example.laoyao.timenote.Tools.NotificationBulider;
+import com.example.laoyao.timenote.Tools.SettingManager;
 import com.example.laoyao.timenote.network.* ;
 
 public class SplashActivity extends AppCompatActivity
@@ -35,7 +36,12 @@ public class SplashActivity extends AppCompatActivity
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
+    }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
 
         new Thread(new Runnable()
         {
@@ -52,8 +58,22 @@ public class SplashActivity extends AppCompatActivity
                     e.printStackTrace();
                 }*/
 
-                //显示notification
-                NotificationBulider.OpenApp(SplashActivity.this);
+                SettingManager manager = new SettingManager(SplashActivity.this) ;
+
+                if(manager.IsAppOpenNotification())
+                {
+                    //显示notification
+                    NotificationBulider.OpenApp(SplashActivity.this);
+                }
+
+                try
+                {
+                    Thread.sleep(WaitTime);
+                }
+                catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
 
                 //切换到主显示界面
                 Intent beginMainTask = new Intent( SplashActivity.this, NoteDisplayActivity.class) ;
@@ -64,4 +84,5 @@ public class SplashActivity extends AppCompatActivity
             }
         }).start(); ;
     }
+
 }

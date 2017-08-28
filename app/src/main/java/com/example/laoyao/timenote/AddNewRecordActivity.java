@@ -18,6 +18,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.laoyao.timenote.DbMode.NoteRecord;
+import com.example.laoyao.timenote.Tools.SettingManager;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView ;
@@ -53,13 +54,20 @@ public class AddNewRecordActivity extends AppCompatActivity
         }
 
         final MaterialCalendarView calendarView = (MaterialCalendarView)findViewById(R.id.noteCalendarView) ;
+        SettingManager manager = new SettingManager(this) ;
 
-
-        //范围选择
         calendarView.setSelectionMode(MaterialCalendarView.SELECTION_MODE_RANGE);
-        calendarView.state().edit().setFirstDayOfWeek(Calendar.SATURDAY).
-                setCalendarDisplayMode(CalendarMode.WEEKS).commit();
 
+        if(manager.IsMonthMode())
+        {
+            calendarView.state().edit().setFirstDayOfWeek(Calendar.SATURDAY).
+                    setCalendarDisplayMode(CalendarMode.MONTHS).commit();
+        }
+        else
+        {
+            calendarView.state().edit().setFirstDayOfWeek(Calendar.SATURDAY).
+                    setCalendarDisplayMode(CalendarMode.WEEKS).commit();
+        }
 
         Calendar instance = Calendar.getInstance();
         calendarView.setSelectedDate(instance.getTime());
@@ -109,12 +117,9 @@ public class AddNewRecordActivity extends AppCompatActivity
                      deadDate =  selectedDays.get(selectedDays.size() - 1);
                 }
 
-
-
                 NoteRecord newRecord = new NoteRecord(deadDate.getYear() , deadDate.getMonth() + 1 , deadDate.getDay() ,
                         //SelectedHour , SelectMinute ,
                         warningDate.getYear() , warningDate.getMonth() + 1 , warningDate.getDay() , shortTag) ;
-
                 newRecord.save() ;
 
                 Intent back = new Intent(AddNewRecordActivity.this , NoteDisplayActivity.class) ;

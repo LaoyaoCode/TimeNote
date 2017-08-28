@@ -43,6 +43,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="40dp"/>
                 <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/monthModeSwitchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -84,6 +85,7 @@
                     android:layout_marginLeft="40dp"/>
 
                 <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/openNotificationSwitchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -115,6 +117,7 @@
                     android:layout_marginLeft="40dp"/>
 
                 <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/openLEDSwitchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -146,6 +149,7 @@
                     android:layout_marginLeft="40dp"/>
 
                 <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/dateChangeSwitchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -177,6 +181,7 @@
                     android:layout_marginLeft="40dp"/>
 
                 <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/appOpenSwitchButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
